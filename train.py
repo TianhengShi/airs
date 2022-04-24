@@ -8,15 +8,15 @@ trainDataFileName = 'airs-dataset/train.csv'
 testDataFileName = 'airs-dataset/test.csv'
 validationDataFileName = 'airs-dataset/valid.csv'
 # Load datasets.
-trainData = tf.contrib.learn.datasets.base.load_csv_without_header(
+trainData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
     filename=trainDataFileName,
     target_dtype=np.int,
     features_dtype=np.int)
-testData = tf.contrib.learn.datasets.base.load_csv_without_header(
+testData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
     filename=testDataFileName,
     target_dtype=np.int,
     features_dtype=np.int)
-# validationData = tf.contrib.learn.datasets.base.load_csv_without_header(
+# validationData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
 #     filename=validationDataFileName,
 #     target_dtype=np.int,
 #     features_dtype=np.int)
@@ -24,7 +24,7 @@ testData = tf.contrib.learn.datasets.base.load_csv_without_header(
 trainingSteps = 1000
 totalTrainingSteps = 5000
 
-featureColumns = [tf.contrib.layers.real_valued_column("", dimension=75)]
+featureColumns = [tf.compat.v1.estimator.layers.real_valued_column("", dimension=75)]
 hiddenUnits = [100, 150, 100, 50]
 classes = 2
 modelDir = 'model'
