@@ -8,15 +8,15 @@ trainDataFileName = 'airs-dataset/train.csv'
 testDataFileName = 'airs-dataset/test.csv'
 validationDataFileName = 'airs-dataset/valid.csv'
 # Load datasets.
-trainData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
+trainData = tf.contrib.learn.datasets.base.load_csv_without_header(
     filename=trainDataFileName,
     target_dtype=np.int,
     features_dtype=np.int)
-testData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
+testData = tf.contrib.learn.datasets.base.load_csv_without_header(
     filename=testDataFileName,
     target_dtype=np.int,
     features_dtype=np.int)
-# validationData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
+# validationData = tf.contrib.learn.datasets.base.load_csv_without_header(
 #     filename=validationDataFileName,
 #     target_dtype=np.int,
 #     features_dtype=np.int)
@@ -24,13 +24,13 @@ testData = tf.compat.v1.estimator.learn.datasets.base.load_csv_without_header(
 trainingSteps = 1000
 totalTrainingSteps = 5000
 
-featureColumns = [tf.compat.v1.estimator.layers.real_valued_column("", dimension=75)]
+featureColumns = [tf.contrib.layers.real_valued_column("", dimension=75)]
 hiddenUnits = [100, 150, 100, 50]
 classes = 2
 modelDir = 'model'
-classifierConfig = tf.compat.v1.estimator.learn.RunConfig(save_checkpoints_secs = None, save_checkpoints_steps = trainingSteps)
+classifierConfig = tf.contrib.learn.RunConfig(save_checkpoints_secs = None, save_checkpoints_steps = trainingSteps)
 
-classifier = tf.compat.v1.estimator.learn.DNNClassifier(feature_columns = featureColumns,
+classifier = tf.contrib.learn.DNNClassifier(feature_columns = featureColumns,
                                                 hidden_units = hiddenUnits,
                                                 n_classes = classes,
                                                 model_dir = modelDir,
