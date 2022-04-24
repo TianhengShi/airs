@@ -28,9 +28,9 @@ featureColumns = [tf.contrib.layers.real_valued_column("", dimension=75)]
 hiddenUnits = [100, 150, 100, 50]
 classes = 2
 modelDir = 'model'
-classifierConfig = tf.contrib.learn.RunConfig(save_checkpoints_secs = None, save_checkpoints_steps = trainingSteps)
+classifierConfig = tf.compat.v1.estimator.learn.RunConfig(save_checkpoints_secs = None, save_checkpoints_steps = trainingSteps)
 
-classifier = tf.contrib.learn.DNNClassifier(feature_columns = featureColumns,
+classifier = tf.compat.v1.estimator.learn.DNNClassifier(feature_columns = featureColumns,
                                                 hidden_units = hiddenUnits,
                                                 n_classes = classes,
                                                 model_dir = modelDir,
